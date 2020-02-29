@@ -2,11 +2,8 @@ package underscore
 
 import "reflect"
 
-// Underscore Object
-type Underscore struct{}
-
 // Map Produces a new slice of values by mapping each value in list through a transformation function
-func (u Underscore) Map(arr interface{}, fn interface{}) interface{} {
+func Map(arr interface{}, fn interface{}) interface{} {
 	valueFunc := reflect.ValueOf(fn)
 	valueArr := reflect.ValueOf(arr)
 
@@ -21,7 +18,7 @@ func (u Underscore) Map(arr interface{}, fn interface{}) interface{} {
 }
 
 // Filter Looks through each value in the list, returning a slice of all the values that pass a truth test
-func (u Underscore) Filter(arr interface{}, fn interface{}) interface{} {
+func Filter(arr interface{}, fn interface{}) interface{} {
 	valueFunc := reflect.ValueOf(fn)
 	valueArr := reflect.ValueOf(arr)
 
@@ -38,7 +35,7 @@ func (u Underscore) Filter(arr interface{}, fn interface{}) interface{} {
 }
 
 // Find Looks through each value in the list, returning the first one that passes a truth test
-func (u Underscore) Find(arr interface{}, fn interface{}) interface{} {
+func Find(arr interface{}, fn interface{}) interface{} {
 	valueFunc := reflect.ValueOf(fn)
 	valueArr := reflect.ValueOf(arr)
 
@@ -55,7 +52,7 @@ func (u Underscore) Find(arr interface{}, fn interface{}) interface{} {
 }
 
 // Reject Returns the values in list without the elements that the truth test (predicate) passes. The oposite of Filter
-func (u Underscore) Reject(arr interface{}, fn interface{}) interface{} {
+func Reject(arr interface{}, fn interface{}) interface{} {
 	valueFunc := reflect.ValueOf(fn)
 	valueArr := reflect.ValueOf(arr)
 
@@ -72,7 +69,7 @@ func (u Underscore) Reject(arr interface{}, fn interface{}) interface{} {
 }
 
 // Every Returns true if all of the values in the list pass the predicate truth test
-func (u Underscore) Every(arr interface{}, fn interface{}) bool {
+func Every(arr interface{}, fn interface{}) bool {
 	valueFunc := reflect.ValueOf(fn)
 	valueArr := reflect.ValueOf(arr)
 

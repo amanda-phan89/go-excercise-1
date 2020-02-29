@@ -5,14 +5,12 @@ import (
 	"testing"
 )
 
-var u = Underscore{}
-
 func TestMap(t *testing.T) {
 	// Given
 	arr := []int{1, 2, 3, 4, 8, 9, 10}
 
 	// When
-	actual := u.Map(arr, func(val int) int {
+	actual := Map(arr, func(val int) int {
 		return val * 2
 	})
 
@@ -28,7 +26,7 @@ func TestFilter(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 8, 9, 10}
 
 	// When
-	actual := u.Filter(arr, func(el int) bool {
+	actual := Filter(arr, func(el int) bool {
 		// return odd number
 		return el%2 != 0
 	})
@@ -45,7 +43,7 @@ func TestFind(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 8, 9, 10}
 
 	// When
-	actual := u.Find(arr, func(el int) bool {
+	actual := Find(arr, func(el int) bool {
 		// return odd number
 		return el%2 != 0
 	}).(int)
@@ -61,7 +59,7 @@ func TestReject(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 8, 9, 10}
 
 	// When
-	actual := u.Reject(arr, func(el int) bool {
+	actual := Reject(arr, func(el int) bool {
 		// reject odd number
 		return el%2 != 0
 	})
@@ -78,7 +76,7 @@ func TestEvery(t *testing.T) {
 	arr := []int{1, 3, 5, 7, 9}
 
 	// When
-	actual := u.Every(arr, func(el int) bool {
+	actual := Every(arr, func(el int) bool {
 		// check odd number
 		return el%2 != 0
 	})
