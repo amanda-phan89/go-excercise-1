@@ -19,13 +19,13 @@ func mapping(u utils.Underscore) {
 	arr := []int{1, 2, 3, 4, 8, 9, 10}
 	newArr := u.Map(arr, func(val int) int {
 		return val * 2
-	}).([]int)
+	})
 	fmt.Printf("Type: %T - Value: %v\n", newArr, newArr)
 
 	arrStr := []string{"a", "b", "c"}
 	newArrStr := u.Map(arrStr, func(val string) string {
 		return val + " test"
-	}).([]string)
+	})
 	fmt.Printf("Type: %T - Value: %v\n", newArrStr, newArrStr)
 }
 
