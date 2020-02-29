@@ -53,3 +53,37 @@ func (u Underscore) Find(arr interface{}, fn interface{}) interface{} {
 	}
 	return result.Interface()
 }
+
+// Reject Returns the values in list without the elements that the truth test (predicate) passes. The oposite of Filter
+func (u Underscore) Reject(arr interface{}, fn interface{}) interface{} {
+	valueFunc := reflect.ValueOf(fn)
+	valueArr := reflect.ValueOf(arr)
+
+	typeOfFuncResult := reflect.SliceOf(valueArr.Index(0).Type())
+	arrResultMap := reflect.MakeSlice(typeOfFuncResult, 0, valueArr.Len())
+
+	for i := 0; i < valueArr.Len(); i++ {
+		funcResult := valueFunc.Call([]reflect.Value{valueArr.Index(i)})[0]
+		if funcResult.Interface().(bool) == false {
+			arrResultMap = reflect.Append(arrResultMap, valueArr.Index(i))
+		}
+	}
+	return arrResultMap.Interface()
+}
+
+// Every Returns true if all of the values in the list pass the predicate truth test
+func (u Underscore) Every(arr interface{}, fn interface{}) bool {
+	valueFunc := reflect.ValueOf(fn)
+	valueArr := reflect.ValueOf(arr)
+
+	result := true
+
+	for i := 0; i < valueArr.Len(); i++ {
+		funcResult := valueFunc.Call([]reflect.Value{valueArr.Index(i)})[0]
+		if funcResult.Interface().(bool) == false {
+			result = false
+			break
+		}
+	}
+	return result
+}
